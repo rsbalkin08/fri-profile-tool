@@ -100,7 +100,7 @@
       </div>
 
       <div class="card result">
-        <h2>Result <span class="pill" id="codePill">CODE: —</span></h2>
+        <h2>Result</h2>
         <div id="profileName" class="muted">Enter scores and click “Generate Profile.”</div>
         <div id="narrative"></div>
       </div>
@@ -174,15 +174,15 @@
   }
 
   function makeNarrative(profileName, code, CE, RR, RC, OUT){
-    // If you later want your full descriptions per code, we can replace this.
-    return (
-      `Profile: ${profileName} (${code})\n` +
-      `Collaborative Exploration (CE): ${CE} (${hlWord(CE)})\n` +
-      `Role of Reconciliation (RR): ${RR} (${hlWord(RR)})\n` +
-      `Remorse/Change (RC): ${RC} (${hlWord(RC)})\n` +
-      `Outcome (OUT): ${OUT} (${hlWord(OUT)})`
-    );
-  }
+  return (
+    `Profile: ${profileName}\n` +
+    `Collaborative Exploration (CE): ${CE}\n` +
+    `Role of Reconciliation (RR): ${RR}\n` +
+    `Remorse/Change (RC): ${RC}\n` +
+    `Outcome (OUT): ${OUT}`
+  );
+}
+
 
   // Simple canvas chart (y-axis 6–30)
   function drawChart(values){
@@ -264,7 +264,7 @@
     }
 
     const code = buildCode(CE, RR, RC, OUT);
-    els.codePill.textContent = `CODE: ${code}`;
+    
 
     const prof = PROFILES[code];
     const profileName = prof ? prof.name : "No matching profile";
