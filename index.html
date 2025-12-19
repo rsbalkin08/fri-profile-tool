@@ -189,71 +189,27 @@
   // {CE_HL} {RR_HL} {RC_HL} {OUT_HL}  (High/Low words)
   // =========================
   const PROFILES = {
-  "HHHH": {
-    name: "Everything Is Awesome",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nSometimes, the offender is only truly remorseful and can only reconcile after the damage has been done and the injury is severe. The recovering victim may experience a sense of confusion or ambivalence because the offender\u2019s remorse appears genuine, but it did not prevent harm. The victim may cautiously explore the relationship and consider reconciliation while remaining wary due to the severity of the injury and the delayed change."
-  },
-  "HHHL": {
-    name: "Almost There",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis pattern reflects strong engagement in exploration, reconciliation, and change, but the overall outcome remains limited. The victim and offender may be doing much of the interpersonal work\u2014talking, processing, apologizing\u2014yet some external barrier (trust, safety, timing, accountability, or ongoing context) prevents a fully positive resolution."
-  },
-  "HHLH": {
-    name: "High Effort / Mixed Outcome",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects high engagement in exploration and reconciliation with a more positive outcome, even if remorse/change is not as strong. The offender may be willing to repair, but may struggle with deeper personal change. The victim may still experience some doubts, but experiences meaningful progress toward repair."
-  },
-  "HHLL": {
-    name: "Stuck Despite Engagement",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects high engagement in exploration and reconciliation, but remorse/change and outcome remain low. The parties may talk extensively and attempt reconciliation, but without meaningful change or accountability the injury remains unresolved. The victim may feel worn out by the process and question whether reconciliation efforts are authentic or effective."
-  },
-  "HLHH": {
-    name: "Exploration + Change Lead to Repair",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects strong collaborative exploration and remorse/change paired with a positive outcome. The offender may demonstrate genuine change and accountability, and the victim engages in meaningful exploration of the injury. Even if reconciliation behaviors are not as prominent, the relationship shows strong movement toward repair."
-  },
-  "HLHL": {
-    name: "Processing Without Resolution",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile suggests high exploration and change efforts, but the outcome remains limited. The parties may be deeply engaged in understanding the injury and attempting change, yet the relationship still does not resolve positively. The victim may be cautiously engaged but not ready to accept repair, or circumstances may prevent full resolution."
-  },
-  "HLLH": {
-    name: "Exploration With Positive Outcome",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects high exploration with a positive outcome, even though reconciliation and change are lower. The victim may feel heard and validated through exploration, and that alone may contribute to resolution. Alternatively, the situation may resolve favorably for reasons outside the offender\u2019s reconciliation behaviors."
-  },
-  "HLLL": {
-    name: "Exploration Without Repair",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects strong collaborative exploration without accompanying reconciliation, change, or positive outcome. The victim may engage in processing and meaning-making, but the offender does not respond in a way that supports repair. The injury remains unresolved and the victim may move toward closure without relational repair."
-  },
-  "LHHH": {
-    name: "Reconciliation-Driven Resolution",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects lower exploration but strong reconciliation, remorse/change, and a positive outcome. The parties may move quickly toward repair behaviors and accountability without extensive exploration. The victim may accept reconciliation based on observed change and repair actions rather than extended processing."
-  },
-  "LHHL": {
-    name: "Repair Attempts, Limited Outcome",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile suggests strong reconciliation and change efforts but a limited outcome. The offender may be trying to repair and change, but the victim may not experience the outcome as fully positive\u2014possibly due to the severity of the injury, timing, or lingering distrust."
-  },
-  "LHLH": {
-    name: "Reconciliation-Led Success",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects lower exploration but strong reconciliation paired with a more positive outcome. The parties may not deeply explore the injury, yet reconciliation behaviors (apologies, relational gestures, repair attempts) support a favorable resolution."
-  },
-  "LHLL": {
-    name: "Reconciliation Without Resolution",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects strong reconciliation behaviors but low change and low outcome. The offender may attempt reconciliation, but without meaningful remorse/change the victim experiences limited resolution. The victim may perceive reconciliation attempts as superficial or incomplete."
-  },
-  "LLHH": {
-    name: "Change Without Deep Exploration",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects lower exploration and reconciliation but higher remorse/change and a positive outcome. The offender may change or correct behavior without extensive relational repair processes. The victim may experience relief or closure based on change alone."
-  },
-  "LLHL": {
-    name: "Remorse Without Repair",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects low exploration and reconciliation but higher remorse/change with a limited outcome. The offender may feel remorse and attempt personal change, but relational repair does not occur. The victim may not feel engaged in the process or may not experience meaningful resolution."
-  },
-  "LLLH": {
-    name: "Low Process / Positive Outcome",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects low engagement in exploration, reconciliation, and change, yet a positive outcome. The resolution may be external (time, distance, circumstance) rather than relational repair. The victim may experience closure without meaningful reconciliation."
-  },
-  "LLLL": {
-    name: "Low Engagement / Poor Outcome",
-    narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE}\nRole of Reconciliation (RR): {RR}\nRemorse/Change (RC): {RC}\nOutcome (OUT): {OUT}\n\nThis profile reflects low scores across all domains and a limited outcome. The injury is not explored, reconciliation is minimal, remorse/change is low, and resolution is poor. The victim may feel stuck, unsupported, or resigned."
-  },
+  "HHHH": { name: "Everything Is Awesome", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe recovering victim views each phase of the reconciliation process as a meaningful endeavor." },
+  "HHHL": { name: "I'm Not Going To Get Over It", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nSometimes, the offender is trying to make things right, but even with those efforts, the injury was too significant and/or trust was too severely damaged for a positive outcome to occur." },
+  "HHLH": { name: "There's Hope Here", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe respondent sees the recovery process as generally helpful and productive. Even if there is not a strong emphasis on remorse/change, the overall process appears to be moving toward repair." },
+  "HHLL": { name: "We Can Talk About It, But...", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe respondent may be engaging in exploration and reconciliation, but without meaningful change (or with barriers to change), the outcome remains limited." },
+
+  "HLHH": { name: "I'm Listening, But Show Me", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe respondent is engaging in collaborative exploration and the offender is showing remorse/change, which supports repair even if reconciliation behaviors are less prominent." },
+  "HLHL": { name: "I Get It... But I'm Still Hurt", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe respondent may be engaging in understanding and the offender may be attempting change, but the overall outcome is still limited—often due to lingering mistrust, severity of injury, or timing." },
+  "HLLH": { name: "Talking Helps", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe respondent experiences the exploration process as beneficial, and a positive outcome is possible even if the offender is not strongly engaging in reconciliation or change." },
+  "HLLL": { name: "I Tried, They Didn't", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe respondent engages in exploration, but the offender does not meaningfully reconcile or change, and the outcome remains poor." },
+
+  "LHHH": { name: "I'm Trying To See The Good In This", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nReconciliation can some-times feel forced, particularly when a victim is trying to see the good in a situation or person; however, it can also be an indicator of a victim's willingness to engage in a positive outcome." },
+  "LHHL": { name: "You're Saying The Right Things, But...", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe offender may be attempting reconciliation and change, but the victim may not experience the outcome as positive—often because trust has not yet been rebuilt or the injury remains unresolved." },
+  "LHLH": { name: "We Can Move Forward", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nReconciliation behaviors may be driving progress toward a positive outcome even when exploration and change are lower." },
+  "LHLL": { name: "Sorry Isn't Enough", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe offender may be attempting reconciliation, but without meaningful change, the outcome remains limited." },
+
+  "LLHH": { name: "Changing Without Talking", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe offender may be changing behavior without deep exploration or reconciliation. The victim may experience improvement based on actions rather than discussion." },
+  "LLHL": { name: "You Feel Bad, But Nothing Changes Here", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThis profile reflects limited exploration and reconciliation, with some remorse/change but little resolution in outcome." },
+  "LLLH": { name: "I Might Need To Rethink This", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThis is a more conflicted profile and might be a person who is trying to reconcile, but the scores suggest the process is not strong—yet the outcome is positive. This may point to external factors shaping resolution." },
+  "LLLL": { name: "No, No, and Hell No", narrative: "Profile: {PROFILE_NAME} ({CODE})\nCollaborative Exploration (CE): {CE} ({CE_HL})\nRole of Reconciliation (RR): {RR} ({RR_HL})\nRemorse/Change (RC): {RC} ({RC_HL})\nOutcome (OUT): {OUT} ({OUT_HL})\n\nThe respondent identifies lower scores in each phase of the recovery process, and the overall outcome is negative/poor." },
 };
+
 
   const cutoff = 18;
 
@@ -285,18 +241,20 @@
     return `${hlLetter(CE)}${hlLetter(RR)}${hlLetter(RC)}${hlLetter(OUT)}`;
   }
 
-  function fillPlaceholders(tpl, ctx) {
-    return tpl
-      .replaceAll("{CODE}", ctx.CODE)
-      .replaceAll("{CE}", String(ctx.CE))
-      .replaceAll("{RR}", String(ctx.RR))
-      .replaceAll("{RC}", String(ctx.RC))
-      .replaceAll("{OUT}", String(ctx.OUT))
-      .replaceAll("{CE_HL}", ctx.CE_HL)
-      .replaceAll("{RR_HL}", ctx.RR_HL)
-      .replaceAll("{RC_HL}", ctx.RC_HL)
-      .replaceAll("{OUT_HL}", ctx.OUT_HL);
-  }
+ function fillPlaceholders(tpl, ctx) {
+  return tpl
+    .replaceAll("{PROFILE_NAME}", ctx.PROFILE_NAME)
+    .replaceAll("{CODE}", ctx.CODE)
+    .replaceAll("{CE}", String(ctx.CE))
+    .replaceAll("{RR}", String(ctx.RR))
+    .replaceAll("{RC}", String(ctx.RC))
+    .replaceAll("{OUT}", String(ctx.OUT))
+    .replaceAll("{CE_HL}", ctx.CE_HL)
+    .replaceAll("{RR_HL}", ctx.RR_HL)
+    .replaceAll("{RC_HL}", ctx.RC_HL)
+    .replaceAll("{OUT_HL}", ctx.OUT_HL);
+}
+
 
   function validateScore(v) {
     if (!Number.isFinite(v)) return "Please enter all four scores.";
@@ -398,13 +356,16 @@
     const narrativeTpl = prof ? prof.narrative : "No narrative found for code {CODE}. Scores: CE={CE}, RR={RR}, RC={RC}, OUT={OUT}";
 
     const ctx = {
-      CODE: code,
-      CE, RR, RC, OUT,
-      CE_HL: hlWord(CE),
-      RR_HL: hlWord(RR),
-      RC_HL: hlWord(RC),
-      OUT_HL: hlWord(OUT),
-    };
+  CODE: code,
+  PROFILE_NAME: profileName,
+  CE, RR, RC, OUT,
+  CE_HL: hlWord(CE),
+  RR_HL: hlWord(RR),
+  RC_HL: hlWord(RC),
+  OUT_HL: hlWord(OUT),
+};
+
+
 
     els.profileName.textContent = profileName;
     els.narrative.textContent = fillPlaceholders(narrativeTpl, ctx);
