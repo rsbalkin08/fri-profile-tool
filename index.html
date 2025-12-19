@@ -288,15 +288,20 @@
     return `${hlLetter(CE)}${hlLetter(RR)}${hlLetter(RC)}${hlLetter(OUT)}`;
   }
 
- function fillPlaceholders(tpl, ctx) {
+ ffunction fillPlaceholders(tpl, ctx) {
   return tpl
-    .replaceAll("{PROFILE_NAME}", ctx.PROFILE_NAME)
-    .replaceAll("{CODE}", ctx.CODE)
-    .replaceAll("{CE}", String(ctx.CE))
-    .replaceAll("{RR}", String(ctx.RR))
-    .replaceAll("{RC}", String(ctx.RC))
-    .replaceAll("{OUT}", String(ctx.OUT));
+    .replaceAll("{PROFILE_NAME}", String(ctx.PROFILE_NAME ?? ""))
+    .replaceAll("{CODE}", String(ctx.CODE ?? ""))
+    .replaceAll("{CE}", String(ctx.CE ?? ""))
+    .replaceAll("{RR}", String(ctx.RR ?? ""))
+    .replaceAll("{RC}", String(ctx.RC ?? ""))
+    .replaceAll("{OUT}", String(ctx.OUT ?? ""))
+    .replaceAll("{CE_HL}", String(ctx.CE_HL ?? ""))
+    .replaceAll("{RR_HL}", String(ctx.RR_HL ?? ""))
+    .replaceAll("{RC_HL}", String(ctx.RC_HL ?? ""))
+    .replaceAll("{OUT_HL}", String(ctx.OUT_HL ?? ""));
 }
+
 
 
   function validateScore(v) {
