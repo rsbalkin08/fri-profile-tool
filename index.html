@@ -117,24 +117,73 @@
   // Profiles: YOUR provided names
   // (Codes are in order CE, RR, RC, OUT)
   // =========================
-  const PROFILES = {
-    "HHHH": { name: "Everything Is Awesome" },
-    "LLLL": { name: "No, No, and Hell No" },
-    "LLLH": { name: "I Might Need To Rethink This" },
-    "HHHL": { name: "I'm Not Going To Get Over It" },
-    "LHHH": { name: "I'm Trying To See The Good In This" },
-    "LLHH": { name: "I'm Trying To See The Good In This" },
-    "LHHL": { name: "I Just Can't See The Good In This" },
-    "LHLH": { name: "Not Going To Change And This Is Unhealthy" },
-    "HLLH": { name: "This Is Toxic, But I Like It" },
-    "HHLH": { name: "Not Ending Over This" },
-    "HLHL": { name: "I'm Just Not Into It" },
-    "HLHH": { name: "I'm Kind Of Into It" },
-    "HLLL": { name: "Just No" },
-    "LHLL": { name: "Just No" },
-    "LLHL": { name: "Just No" },
-    "HHLL": { name: "Just No" }
-  };
+ const PROFILES = {
+  "HHHH": {
+    name: "Everything Is Awesome",
+    desc: "The recovering victim views each phase of the reconciliation process as a meaningful endeavor. The recovering victim sees an overall positive outcome. The recovering victim sees each phase as useful and constructive."
+  },
+  "LLLL": {
+    name: "No, No, and Hell No",
+    desc: "The respondent identifies lower scores in each phase of the recovery process. The recovering victim sees an overall negative/poor outcome. The recovering victim does not think that the offender is remorseful, has not experienced meaningful reconciliation, and has not experienced significant change. The injury may have caused significant damage to the relationship, and reconciliation may not be possible. The injury may be unresolved."
+  },
+  "LLLH": {
+    name: "I Might Need To Rethink This",
+    desc: "This is a more conflicted profile and might be a person who is trying to reconcile. The injury may have caused significant damage to the relationship, and reconciliation may be unachievable. In this profile, the recovering victim feels there is an overall positive outcome, but feels that the offender is not remorseful, and does not engage in meaningful reconciliation. This could indicate that the recovering victim does not want to reconcile despite feeling that there is a positive outcome. The recovering victim could also be self-protective, and sees leaving or distancing as a positive outcome."
+  },
+  "HHHL": {
+    name: "I'm Not Going To Get Over It",
+    desc: "Sometimes, the offender is only truly remorseful and can only reconcile after the damage has been done and the injury is severe. The recovering victim may experience a sense of confusion or ambivalence because the offender’s remorse appears genuine, but it did not prevent harm. The victim may cautiously explore the relationship and consider reconciliation while remaining wary due to the severity of the injury and the delayed change."
+  },
+  "LHHH": {
+    name: "I'm Trying To See The Good In This",
+    desc: "Reconciliation can some-times feel forced, particularly when a victim is trying to see the good in a situation or person; however, it can also be an indicator of a victim's willingness to engage in a positive outcome."
+  },
+  "LLHH": {
+    name: "I'm Trying To See The Good In This",
+    desc: "Reconciliation can some-times feel forced, particularly when a victim is trying to see the good in a situation or person; however, it can also be an indicator of a victim's willingness to engage in a positive outcome."
+  },
+  "LHHL": {
+    name: "I Just Can't See The Good In This",
+    desc: "Simply because reconciliation is beneficial and helpful does not mean it will result in a positive outcome. In this profile, it could indicate that a victim wants to forgive, but perhaps struggles to let go of pain. It could also mean that the victim sees the offender as remorseful, but still thinks the injury was too severe. The victim might engage in reconciliation but still feel the overall outcome is negative. The injury might continue to feel unresolved."
+  },
+  "LHLH": {
+    name: "Not Going To Change And This Is Unhealthy",
+    desc: "This profile indicates a potentially unhealthy relationship dynamic. The offender is not remorseful and has not changed, yet the outcome is positive. This could indicate a victim who is minimizing or rationalizing harm, or who is invested in the relationship despite ongoing negative behavior. It may be important to consider whether the victim’s “positive outcome” reflects genuine resolution or coping/avoidance."
+  },
+  "HLLH": {
+    name: "This Is Toxic, But I Like It",
+    desc: "Yes, this happens too. This profile indicates that the victim is exploring the injury and sees the outcome as positive, but the offender is not remorseful and does not reconcile or change. This might suggest a relationship where the victim gains clarity or closure through exploration, or where the victim values the relationship despite harm. It may also reflect a complicated dynamic in which positive outcome is defined differently by the victim."
+  },
+  "HHLH": {
+    name: "Not Ending Over This",
+    desc: "In a scenario such as this, the recovering victim might feel that the harm doesn’t warrant ending the relationship. The offender is not remorseful and has not changed, but the victim engages in exploration and reconciliation and sees the outcome as positive. This may indicate that the victim is willing to reconcile even without meaningful change, perhaps due to the nature of the relationship or perceived stakes."
+  },
+  "HLHL": {
+    name: "I'm Just Not Into It",
+    desc: "Sometimes, feelings change toward a remorseful offender. In this profile, the offender is remorseful and shows change, but reconciliation does not occur and the overall outcome is negative. The victim may no longer desire to repair the relationship, even if the offender is trying. The victim might feel emotionally detached, disinterested, or unable to move forward."
+  },
+  "HLHH": {
+    name: "I'm Kind Of Into It",
+    desc: "Occasionally, we become involved in relationships where exploration and change occur later in the process. In this profile, the victim engages in exploration, the offender shows change, reconciliation is present, and the outcome is positive. Even if the early process was weak, later efforts may support repair and a favorable resolution."
+  },
+  "HLLL": {
+    name: "Just No",
+    desc: "In many situations, reconciliation is simply not desired. The victim may explore the injury, but the offender is not remorseful, reconciliation does not occur, change is absent, and the outcome is negative. The victim may decide the relationship is not worth repairing."
+  },
+  "LHLL": {
+    name: "Just No",
+    desc: "In many situations, reconciliation is simply not desired. The offender may attempt reconciliation, but without meaningful change or remorse, the outcome remains negative. The victim may feel that repair is not possible or not worth pursuing."
+  },
+  "LLHL": {
+    name: "Just No",
+    desc: "In many situations, reconciliation is simply not desired. The offender may show some change, but exploration and reconciliation are low and the outcome is negative. The victim may feel that the relationship is beyond repair or may not want to reconnect."
+  },
+  "HHLL": {
+    name: "Just No",
+    desc: "In many situations, reconciliation is simply not desired. Even with exploration and some reconciliation, if change is absent and the outcome is negative, the victim may conclude that repair is not appropriate or possible. The victim may remain hurt and unwilling to move forward."
+  }
+};
+
 
   const cutoff = 18;
 
@@ -266,11 +315,13 @@
     const code = buildCode(CE, RR, RC, OUT);
     
 
-    const prof = PROFILES[code];
-    const profileName = prof ? prof.name : "No matching profile";
+   const prof = PROFILES[code];
+const profileName = prof ? prof.name : "No matching profile";
+const desc = prof ? prof.desc : "No description available for this profile.";
 
-    els.profileName.textContent = profileName;
-    els.narrative.textContent = makeNarrative(profileName, code, CE, RR, RC, OUT);
+els.profileName.textContent = profileName;
+els.narrative.textContent = desc;   // description ONLY
+
     drawChart([CE, RR, RC, OUT]);
   }
 
