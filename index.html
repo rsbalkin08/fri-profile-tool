@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FRI Profile Tool</title>
+  <style>
+    :root {
+      --maxw: 860px;
+    }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      background: #f7f7fb;
+      color: #111;
+    }
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      padding: 20px 20px 26px;
+    }
+    h1 { margin: 0 0 10px; font-size: 22px; }
+    p  { margin: 0 0 18px; color: #444; line-height: 1.45; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      border: 1px solid #e8e8ef;
+      border-radius: 14px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .field label { display: block; font-size: 13px; color: #333; margin-bottom: 6px; }
+    .field input {
+      width: 100%;
+      padding: 10px 10px;
+      border: 1px solid #d7d7e2;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+    .field input:focus { border-color: #6b78ff; box-shadow: 0 0 0 3px rgba(107,120,255,.15); }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      background: #2d3cff;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { filter: brightness(.95); }
+    .muted { color: #666; font-size: 13px; }
+
+    .result h2 { margin: 0 0 8px; font-size: 18px; }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f0f2ff;
+      border: 1px solid #dfe3ff;
+      font-size: 13px;
+      color: #2430c9;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* Narrative font size is controlled here */
+    #narrative {
+      font-size: 19px;       /* <-- make bigger/smaller */
+      line-height: 1.6;
+      white-space: pre-wrap;
+      margin-top: 10px;
+      background: #fbfbff;
+      border: 1px solid #e7e7ff;
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .controls input[type="range"] { width: 220px; }
+
+    canvas {
+      width: 100%;
+      height: 280px;
+      border: 1px solid #e8e8ef;
+      border-radius: 14px;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>FRI Profile Tool</h1>
+    <p>Enter your four scores to see your profile match (High ≥ 18, Low &lt; 18), narrative, and a simple chart.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="muted">Scores (range 6–30)</div>
+        <div class="inputs">
+          <div class="field">
+            <label for="ce">Collaborative Exploration (CE)</label>
+            <input id="ce" type="number" min="0" max="30" step="1" placeholder="e.g., 22" />
+          </div>
+          <div class="field">
+            <label for="rr">Role of Reconciliation (RR)</label>
+            <input id="rr" type="number" min="0" max="30" step="1" placeholder="e.g., 19" />
+          </div>
+          <div class="field">
+            <label for="rc">Remorse/Change (RC)</label>
+            <input id="rc" type="number" min="0" max="30" step="1" placeholder="e.g., 21" />
+          </div>
+          <div class="field">
+            <label for="out">Outcome (OUT)</label>
+            <input id="out" type="number" min="0" max="30" step="1" placeholder="e.g., 25" />
+          </div>
+        </div>
+
+        <div class="row">
+          <button id="runBtn">Generate Profile</button>
+          <span class="muted" id="status"></span>
+        </div>
+
+        <div class="controls">
+          <span class="muted">Narrative font size</span>
+          <input id="fontSize" type="range" min="14" max="28" value="19" />
+          <span class="muted" id="fontLabel">19px</span>
+        </div>
+      </div>
+
+      <div class="card result">
+        <h2>
+          Result
+          <span class="pill" id="codePill">CODE: —</span>
+        </h2>
+        <div id="profileName" class="muted">Enter scores and click “Generate Profile.”</div>
+        <div id="narrative"></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <div class="muted" style="margin-bottom:10px;">Chart (y-axis 6–30)</div>
+      <canvas id="chart" width="900" height="320"></canvas>
+    </div>
+  </div>
+
+<script>
+  // =========================
+  // 1) Your 16 profiles live here
+  // Replace ProfileName and Narrative with YOUR definitions.
+  // Narrative placeholders supported:
+  // {CODE} {CE} {RR} {RC} {OUT}
+  // {CE_HL} {RR_HL} {RC_HL} {OUT_HL}  (High/Low words)
+  // =========================
+  const PROFILES = {
+    "LLLL": { name: "Low Engagement / Poor Outcome",
+      narrative: "This profile ({CODE}) reflects consistently low scores across all four domains (CE={CE}, RR={RR}, RC={RC}, OUT={OUT})." },
+    "LLLH": { name: "Low Engagement / Positive Outcome",
+      narrative: "Despite generally low engagement (CE={CE}, RR={RR}, RC={RC}), the outcome is {OUT_HL} (OUT={OUT})." },
+    "LLHL": { name: "Low Engagement / Remorse Driven",
+      narrative: "Low exploration (CE={CE}) and reconciliation (RR={RR}) with higher remorse/change (RC={RC}); outcome is {OUT_HL} (OUT={OUT})." },
+    "LLHH": { name: "Remorse-Focused Improvement",
+      narrative: "Low early engagement contrasts with higher remorse/change (RC={RC}) and a {OUT_HL} outcome (OUT={OUT})." },
+
+    "LHLL": { name: "Reconciliation Without Engagement",
+      narrative: "Reconciliation is {RR_HL} (RR={RR}) while exploration and outcome remain lower (CE={CE}, OUT={OUT})." },
+    "LHLH": { name: "Reconciliation-Led Success",
+      narrative: "Reconciliation is {RR_HL} (RR={RR}); outcome is {OUT_HL} (OUT={OUT}) despite lower exploration (CE={CE})." },
+    "LHHL": { name: "Reconciliation + Remorse, Limited Outcome",
+      narrative: "Reconciliation and remorse/change are elevated (RR={RR}, RC={RC}), but outcome is {OUT_HL} (OUT={OUT})." },
+    "LHHH": { name: "Reconciliation-Driven Resolution",
+      narrative: "Strong reconciliation and remorse/change (RR={RR}, RC={RC}) correspond with a {OUT_HL} outcome (OUT={OUT})." },
+
+    "HLLL": { name: "Exploration Without Repair",
+      narrative: "Exploration is {CE_HL} (CE={CE}) but reconciliation, remorse/change, and outcome are lower (RR={RR}, RC={RC}, OUT={OUT})." },
+    "HLLH": { name: "Exploration With External Resolution",
+      narrative: "Exploration is {CE_HL} (CE={CE}) with a {OUT_HL} outcome (OUT={OUT}) despite lower reconciliation and remorse/change." },
+    "HLHL": { name: "Exploration + Remorse, Limited Outcome",
+      narrative: "Exploration and remorse/change are elevated (CE={CE}, RC={RC}); outcome is {OUT_HL} (OUT={OUT})." },
+    "HLHH": { name: "Exploration + Remorse Lead to Resolution",
+      narrative: "Exploration and remorse/change are elevated (CE={CE}, RC={RC}) with a {OUT_HL} outcome (OUT={OUT})." },
+
+    "HHLL": { name: "High Engagement, Poor Outcome",
+      narrative: "Exploration and reconciliation are elevated (CE={CE}, RR={RR}) but outcome is {OUT_HL} (OUT={OUT})." },
+    "HHLH": { name: "High Engagement, Mixed Outcome",
+      narrative: "High exploration and reconciliation (CE={CE}, RR={RR}) with a {OUT_HL} outcome (OUT={OUT})." },
+    "HHHL": { name: "Strong Engagement, Limited Outcome",
+      narrative: "Engagement is strong across CE/RR/RC (CE={CE}, RR={RR}, RC={RC}) but outcome is {OUT_HL} (OUT={OUT})." },
+    "HHHH": { name: "Comprehensive Resolution",
+      narrative: "High scores across all domains (CE={CE}, RR={RR}, RC={RC}, OUT={OUT}) indicate a comprehensive resolution." },
+  };
+
+  const cutoff = 18;
+
+  const els = {
+    ce: document.getElementById("ce"),
+    rr: document.getElementById("rr"),
+    rc: document.getElementById("rc"),
+    out: document.getElementById("out"),
+    runBtn: document.getElementById("runBtn"),
+    status: document.getElementById("status"),
+    codePill: document.getElementById("codePill"),
+    profileName: document.getElementById("profileName"),
+    narrative: document.getElementById("narrative"),
+    canvas: document.getElementById("chart"),
+    fontSize: document.getElementById("fontSize"),
+    fontLabel: document.getElementById("fontLabel"),
+  };
+
+  els.fontSize.addEventListener("input", () => {
+    const px = `${els.fontSize.value}px`;
+    els.narrative.style.fontSize = px;
+    els.fontLabel.textContent = px;
+  });
+
+  function hlWord(v) { return v >= cutoff ? "High" : "Low"; }
+  function hlLetter(v) { return v >= cutoff ? "H" : "L"; }
+
+  function buildCode(CE, RR, RC, OUT) {
+    return `${hlLetter(CE)}${hlLetter(RR)}${hlLetter(RC)}${hlLetter(OUT)}`;
+  }
+
+  function fillPlaceholders(tpl, ctx) {
+    return tpl
+      .replaceAll("{CODE}", ctx.CODE)
+      .replaceAll("{CE}", String(ctx.CE))
+      .replaceAll("{RR}", String(ctx.RR))
+      .replaceAll("{RC}", String(ctx.RC))
+      .replaceAll("{OUT}", String(ctx.OUT))
+      .replaceAll("{CE_HL}", ctx.CE_HL)
+      .replaceAll("{RR_HL}", ctx.RR_HL)
+      .replaceAll("{RC_HL}", ctx.RC_HL)
+      .replaceAll("{OUT_HL}", ctx.OUT_HL);
+  }
+
+  function validateScore(v) {
+    if (!Number.isFinite(v)) return "Please enter all four scores.";
+    if (v < 0 || v > 30) return "Scores must be between 0 and 30.";
+    return null;
+  }
+
+  // Simple canvas chart
+  function drawChart(values) {
+    const ctx = els.canvas.getContext("2d");
+    const W = els.canvas.width, H = els.canvas.height;
+
+    // Clear
+    ctx.clearRect(0, 0, W, H);
+
+    // Plot settings
+    const padding = { left: 60, right: 30, top: 20, bottom: 50 };
+    const x0 = padding.left, x1 = W - padding.right;
+    const y0 = padding.top, y1 = H - padding.bottom;
+
+    const ymin = 6, ymax = 30;
+    const labels = ["CE", "RR", "RC", "OUT"];
+
+    // Axes
+    ctx.strokeStyle = "#222";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x0, y1);
+    ctx.lineTo(x1, y1);
+    ctx.stroke();
+
+    // Y ticks
+    ctx.fillStyle = "#222";
+    ctx.font = "12px system-ui";
+    const ticks = [6, 12, 18, 24, 30];
+    ticks.forEach(t => {
+      const y = y1 - ((t - ymin) / (ymax - ymin)) * (y1 - y0);
+      ctx.strokeStyle = "#ddd";
+      ctx.beginPath();
+      ctx.moveTo(x0, y);
+      ctx.lineTo(x1, y);
+      ctx.stroke();
+
+      ctx.fillStyle = "#222";
+      ctx.fillText(String(t), 20, y + 4);
+    });
+
+    // X positions
+    const xs = labels.map((_, i) => x0 + (i * (x1 - x0) / (labels.length - 1)));
+    const ys = values.map(v => y1 - ((v - ymin) / (ymax - ymin)) * (y1 - y0));
+
+    // Line
+    ctx.strokeStyle = "#2d3cff";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(xs[0], ys[0]);
+    for (let i = 1; i < xs.length; i++) ctx.lineTo(xs[i], ys[i]);
+    ctx.stroke();
+
+    // Points
+    ctx.fillStyle = "#2d3cff";
+    for (let i = 0; i < xs.length; i++) {
+      ctx.beginPath();
+      ctx.arc(xs[i], ys[i], 5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // X labels
+    ctx.fillStyle = "#222";
+    ctx.font = "14px system-ui";
+    labels.forEach((lab, i) => {
+      ctx.fillText(lab, xs[i] - 10, H - 18);
+    });
+  }
+
+  function run() {
+    els.status.textContent = "";
+    const CE = Number(els.ce.value);
+    const RR = Number(els.rr.value);
+    const RC = Number(els.rc.value);
+    const OUT = Number(els.out.value);
+
+    const err = validateScore(CE) || validateScore(RR) || validateScore(RC) || validateScore(OUT);
+    if (err) {
+      els.status.textContent = err;
+      els.profileName.textContent = "—";
+      els.codePill.textContent = "CODE: —";
+      els.narrative.textContent = "";
+      drawChart([6,6,6,6]);
+      return;
+    }
+
+    const code = buildCode(CE, RR, RC, OUT);
+    els.codePill.textContent = `CODE: ${code}`;
+
+    const prof = PROFILES[code];
+    const profileName = prof ? prof.name : "No matching profile";
+    const narrativeTpl = prof ? prof.narrative : "No narrative found for code {CODE}. Scores: CE={CE}, RR={RR}, RC={RC}, OUT={OUT}";
+
+    const ctx = {
+      CODE: code,
+      CE, RR, RC, OUT,
+      CE_HL: hlWord(CE),
+      RR_HL: hlWord(RR),
+      RC_HL: hlWord(RC),
+      OUT_HL: hlWord(OUT),
+    };
+
+    els.profileName.textContent = profileName;
+    els.narrative.textContent = fillPlaceholders(narrativeTpl, ctx);
+    drawChart([CE, RR, RC, OUT]);
+  }
+
+  els.runBtn.addEventListener("click", run);
+
+  // draw default chart
+  drawChart([6, 6, 6, 6]);
+</script>
+</body>
+</html>
