@@ -120,69 +120,93 @@
  const PROFILES = {
   "HHHH": {
     name: "Everything Is Awesome",
-    desc: "The recovering victim views each phase of the reconciliation process as a meaningful endeavor. The recovering victim sees an overall positive outcome. The recovering victim sees each phase as useful and constructive."
+    desc: `The recovering victim views each phase of the FRM in a positive light. Higher scores are noted in each of the four phases. In a scenario such as this, the person who was offended or harmed continues to have positive feelings toward the individual who committed the offense or caused harm, views reconciliation as beneficial, feels that the offender has demonstrated remorse and changed behavior, and sees the renegotiation of the relationship and reconciliation as a meaningful endeavor.`
   },
+
   "LLLL": {
     name: "No, No, and Hell No",
-    desc: "The respondent identifies lower scores in each phase of the recovery process. The recovering victim sees an overall negative/poor outcome. The recovering victim does not think that the offender is remorseful, has not experienced meaningful reconciliation, and has not experienced significant change. The injury may have caused significant damage to the relationship, and reconciliation may not be possible. The injury may be unresolved."
+    desc: `The respondent identifies lower scores in each of the four phases. In a scenario such as this, the person who was offended or harmed continues to have negative feelings toward the individual who committed the offense or caused harm, views reconciliation as unhealthy, feels that the offender failed to or is unable to demonstrate any remorse or changed behavior, and sees the need to move forward without the presence of this relationship.`
   },
+
   "LLLH": {
     name: "I Might Need To Rethink This",
-    desc: "This is a more conflicted profile and might be a person who is trying to reconcile. The injury may have caused significant damage to the relationship, and reconciliation may be unachievable. In this profile, the recovering victim feels there is an overall positive outcome, but feels that the offender is not remorseful, and does not engage in meaningful reconciliation. This could indicate that the recovering victim does not want to reconcile despite feeling that there is a positive outcome. The recovering victim could also be self-protective, and sees leaving or distancing as a positive outcome."
+    desc: `This is a more conflicted profile and might be indicative of someone who is putting others before oneself or could even be someone in an abusive relationship. This profile is denoted by low scores in the first three phases of the FRM and a high score in the Outcome phase. In a situation like this, the victim views the offender in a negative light but might feel guilty or compelled to stay in the relationship. The victim acknowledges that the offender is not likely to change but continues to work toward reconciliation. In all seriousness, this could be a dangerous situation. This type of profile could be indicative of someone who could benefit from counseling and may be typical of individuals who are in an abusive relationship.`
   },
+
   "HHHL": {
     name: "I'm Not Going To Get Over It",
-    desc: "Sometimes, the offender is only truly remorseful and can only reconcile after the damage has been done and the injury is severe. The recovering victim may experience a sense of confusion or ambivalence because the offender’s remorse appears genuine, but it did not prevent harm. The victim may cautiously explore the relationship and consider reconciliation while remaining wary due to the severity of the injury and the delayed change."
+    desc: `Sometimes, the offender is trying to make things right, but it is too late for the person who was harmed. In this case, the person who is recovering from a transgression might indicate higher scores in the first three phases but a lower score in the Outcome phase. The recovering victim noted positive feelings toward the offender, the benefits of a reconciled relationship, and the remorse/ change of the offender. But the recovering victim is not going to get over the offense. Sometimes, this is due to a value-based standard, such as, “I would never stay with someone who cheated on me!” At other times, the recovering victim realizes that no matter how much they might care about a person, they are not going to get over the hurt or issues of trust. Another possibility is that the recovering victim simply feels indifference toward the offender, indicating that the offender might now be a decent person but simply wants nothing to do with the offender any longer.`
   },
+
   "LHHH": {
     name: "I'm Trying To See The Good In This",
-    desc: "Reconciliation can some-times feel forced, particularly when a victim is trying to see the good in a situation or person; however, it can also be an indicator of a victim's willingness to engage in a positive outcome."
+    desc: `"Reconciliation can some-times feel forced, particularly when the victim holds negative feelings toward the offender or questions whether reconciliation is beneficial. In such situations, a person might respond with one of the following profiles: 
+1. Lower score in Collaborative Exploration and higher scores in the subsequent areas; 
+2. Lower scores in Collaborative Exploration and Role of Reconciliation and higher scores in Remorse/Change and Outcome. 
+Sometimes, you are just angry. A person who was harmed might be thinking (or perhaps being told by someone else), “I need to get over this!” But the individual is not “just getting over it.” Rather, even though the victim might see some benefit to reconciliation, the offender has demonstrated remorse and change, and there is some movement toward reconciliation, the residual anger still needs to be dealt with in order to move forward in a healthy way. "`
   },
+
   "LLHH": {
     name: "I'm Trying To See The Good In This",
-    desc: "Reconciliation can some-times feel forced, particularly when a victim is trying to see the good in a situation or person; however, it can also be an indicator of a victim's willingness to engage in a positive outcome."
+    desc: `"Reconciliation can some-times feel forced, particularly when the victim holds negative feelings toward the offender or questions whether reconciliation is beneficial. In such situations, a person might respond with one of the following profiles: 
+1. Lower score in Collaborative Exploration and higher scores in the subsequent areas; 
+2. Lower scores in Collaborative Exploration and Role of Reconciliation and higher scores in Remorse/Change and Outcome. 
+Sometimes, you are just angry. A person who was harmed might be thinking (or perhaps being told by someone else), “I need to get over this!” But the individual is not “just getting over it.” Rather, even though the victim might see some benefit to reconciliation, the offender has demonstrated remorse and change, and there is some movement toward reconciliation, the residual anger still needs to be dealt with in order to move forward in a healthy way.`
   },
+
   "LHHL": {
     name: "I Just Can't See The Good In This",
-    desc: "Simply because reconciliation is beneficial and helpful does not mean it will result in a positive outcome. In this profile, it could indicate that a victim wants to forgive, but perhaps struggles to let go of pain. It could also mean that the victim sees the offender as remorseful, but still thinks the injury was too severe. The victim might engage in reconciliation but still feel the overall outcome is negative. The injury might continue to feel unresolved."
+    desc: `Simply because reconciliation is beneficial and the offender is intent on changing does not mean that reconciliation is going to occur. Here, we see lower scores in Collaborative Exploration and Outcome but higher scores in the middle phases. There may be some underlying anger or dissatisfaction toward the offender, and despite the offender’s attempts to change, the recovering victim simply does not see the benefit or the value in pursuing reconciliation and chooses to move forward without the relationship.`
   },
+
   "LHLH": {
     name: "Not Going To Change And This Is Unhealthy",
-    desc: "This profile indicates a potentially unhealthy relationship dynamic. The offender is not remorseful and has not changed, yet the outcome is positive. This could indicate a victim who is minimizing or rationalizing harm, or who is invested in the relationship despite ongoing negative behavior. It may be important to consider whether the victim’s “positive outcome” reflects genuine resolution or coping/avoidance."
+    desc: `This is a more conflicted profile and might be indicative of someone who is putting others before oneself or could even be someone in an abusive relationship. This profile is noted by alternating low and high scores in each of the four phases. Similar to the I Might Need To Rethink This profile, the victim views the offender in a negative light but might consider staying in the relationship for external reasons or pressure, perhaps because of cultural expectations, fear of change, fear of the offender, or belief that some greater good might come out of the relationship (e.g., not disappointing kids or family). The victim acknowledges that the offender is not likely to change but continues to work toward reconciliation.`
   },
+
   "HLLH": {
     name: "This Is Toxic, But I Like It",
-    desc: "Yes, this happens too. This profile indicates that the victim is exploring the injury and sees the outcome as positive, but the offender is not remorseful and does not reconcile or change. This might suggest a relationship where the victim gains clarity or closure through exploration, or where the victim values the relationship despite harm. It may also reflect a complicated dynamic in which positive outcome is defined differently by the victim."
+    desc: `Yes, this happens too. Unhealthy tendencies might be noted when higher scores are evident in Collaborative Exploration and Outcome, but lower scores are indicated in Role of Reconciliation and Remorse/Change. This profile is the opposite of I Just Can’t See The Good In This. Sometimes, ending an unhealthy relationship is difficult because there may be aspects of it that are enjoyable. Even if the relationship is abusive, there may also be some dependency issues or addiction. Individuals with this type of profile might benefit from counseling because the offender is unlikely to change, and the victim might have a tendency toward unhealthy relationships.`
   },
+
   "HHLH": {
     name: "Not Ending Over This",
-    desc: "In a scenario such as this, the recovering victim might feel that the harm doesn’t warrant ending the relationship. The offender is not remorseful and has not changed, but the victim engages in exploration and reconciliation and sees the outcome as positive. This may indicate that the victim is willing to reconcile even without meaningful change, perhaps due to the nature of the relationship or perceived stakes."
+    desc: `In a scenario such as this, the recovering victim is inclined toward reconciliation, perhaps because the offense is not severe enough to result in terminating a relationship, or the recovering  victim is not just not at the point that the relationship has no value, even if the offender has not changed. Elevated scores are denoted except in Remorse/Change. The victim of the offense in this case should be cautious because of the potential for a power differential, in which the offender has more power in the relationship owing to the victim’s stronger investment in the relationship.`
   },
+
   "HLHL": {
     name: "I'm Just Not Into It",
-    desc: "Sometimes, feelings change toward a remorseful offender. In this profile, the offender is remorseful and shows change, but reconciliation does not occur and the overall outcome is negative. The victim may no longer desire to repair the relationship, even if the offender is trying. The victim might feel emotionally detached, disinterested, or unable to move forward."
+    desc: `Sometimes, feelings change toward a remorseful offender. Even if the relationship was positive, reconciliation after being hurt can be difficult. In such cases, a victim might identify positive feelings toward the offender and the belief that the offender has changed, but denote less benefit to reconciliation. An interesting feature is that this profile is the opposite of Not Going To Change, And This Is Unhealthy. A recovering victim may simply wish to move on without the complications of the relationship. Rebuilding trust can be hard work and needs to be perceived as worthwhile. This is likely an uncommon profile, as the Role of Reconciliation may be less likely to be a determining factor in the decision to pursue an interpersonal or intrapersonal path of forgiveness.`
   },
+
   "HLHH": {
     name: "I'm Kind Of Into It",
-    desc: "Occasionally, we become involved in relationships where exploration and change occur later in the process. In this profile, the victim engages in exploration, the offender shows change, reconciliation is present, and the outcome is positive. Even if the early process was weak, later efforts may support repair and a favorable resolution."
+    desc: `Occasionally, we become involved in relationships with individuals who are not healthy for us, or we may not be particularly good for them. And even though we recognize this, we still engage in the relationship. So, we experience positive feelings toward the offender but recognize that reconciliation is not beneficial; yet, the offender has changed and expressed remorse, and we feel drawn to re-engage in the relationship. This could turn out to be an unhealthy scenario, so an individual with this profile may want to proceed cautiously if the decision is to reconcile the relationship.`
   },
+
   "HLLL": {
     name: "Just No",
-    desc: "In many situations, reconciliation is simply not desired. The victim may explore the injury, but the offender is not remorseful, reconciliation does not occur, change is absent, and the outcome is negative. The victim may decide the relationship is not worth repairing."
+    desc: `In many situations, reconciliation is just not going to happen. This profile follows a similar theme to No, No, and Hell No. However, at least one score in the first three phases is elevated. In this case, the victim may be led to an outcome of pursuing an intrapersonal forgiveness path. Although the recovering victim is able to see some elements of the offender in a positive light, the remaining elements point to reconciliation being less likely and perhaps even unhealthy in some cases.`
   },
+
   "LHLL": {
     name: "Just No",
-    desc: "In many situations, reconciliation is simply not desired. The offender may attempt reconciliation, but without meaningful change or remorse, the outcome remains negative. The victim may feel that repair is not possible or not worth pursuing."
+    desc: `In many situations, reconciliation is just not going to happen. This profile follows a similar theme to No, No, and Hell No. However, at least one score in the first three phases is elevated. In this case, the victim may be led to an outcome of pursuing an intrapersonal forgiveness path. Although the recovering victim is able to see some elements of the offender in a positive light, the remaining elements point to reconciliation being less likely and perhaps even unhealthy in some cases.`
   },
+
   "LLHL": {
     name: "Just No",
-    desc: "In many situations, reconciliation is simply not desired. The offender may show some change, but exploration and reconciliation are low and the outcome is negative. The victim may feel that the relationship is beyond repair or may not want to reconnect."
+    desc: `In many situations, reconciliation is just not going to happen. This profile follows a similar theme to No, No, and Hell No. However, at least one score in the first three phases is elevated. In this case, the victim may be led to an outcome of pursuing an intrapersonal forgiveness path. Although the recovering victim is able to see some elements of the offender in a positive light, the remaining elements point to reconciliation being less likely and perhaps even unhealthy in some cases.`
   },
+
   "HHLL": {
     name: "Just No",
-    desc: "In many situations, reconciliation is simply not desired. Even with exploration and some reconciliation, if change is absent and the outcome is negative, the victim may conclude that repair is not appropriate or possible. The victim may remain hurt and unwilling to move forward."
+    desc: `In many situations, reconciliation is just not going to happen. This profile follows a similar theme to No, No, and Hell No. However, at least one score in the first three phases is elevated. In this case, the victim may be led to an outcome of pursuing an intrapersonal forgiveness path. Although the recovering victim is able to see some elements of the offender in a positive light, the remaining elements point to reconciliation being less likely and perhaps even unhealthy in some cases.`
   }
 };
+
+
+
 
 
   const cutoff = 18;
