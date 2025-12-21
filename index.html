@@ -367,6 +367,19 @@ els.narrative.textContent = desc;   // description ONLY
 
   els.runBtn.addEventListener("click", run);
   drawChart([6,6,6,6]);
+  window.addEventListener("resize", () => {
+  const CE  = Number(els.ce.value);
+  const RR  = Number(els.rr.value);
+  const RC  = Number(els.rc.value);
+  const OUT = Number(els.out.value);
+
+  if ([CE, RR, RC, OUT].every(Number.isFinite)) {
+    drawChart([CE, RR, RC, OUT]);
+  } else {
+    drawChart([6, 6, 6, 6]);
+  }
+});
+
 </script>
 </body>
 </html>
