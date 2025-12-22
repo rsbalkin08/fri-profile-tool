@@ -54,15 +54,77 @@
     .controls{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:10px; }
     .controls input[type="range"]{ width:220px; }
     canvas{
-      width:100%; height:280px; border:1px solid #e8e8ef;
-      border-radius:14px; background:#fff;
-    }
+  width:100%;
+  height:280px;
+  border:1px solid #e8e8ef;
+  border-radius:14px;
+  background:#fff;
+}
+
+/* Mobile layout tweaks */
+@media (max-width:760px){
+  body { padding: 12px; }
+  .wrap { padding: 14px; border-radius: 14px; }
+  .card { padding: 12px; border-radius: 12px; }
+
+  /* Force the score inputs into ONE column on phones */
+  .inputs { grid-template-columns: 1fr; }
+
+  /* Make the button easier to tap */
+  button { 
+    width: 100%; 
+    padding: 14px 16px; 
+    font-size: 16px; 
+    border-radius: 14px; 
+  }
+
+  /* Narrative readability */
+  #narrative { font-size: 18px; padding: 12px; }
+
+  /* Make slider full width */
+  .controls input[type="range"] { width: 100%; }
+}
+
+/* Extra safety net for tablets / larger phones */
+@media (max-width: 900px){
+  .inputs{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Book callout styling — ADD THIS */
+.book-callout{
+  margin-top: 12px;
+  background: #f7f8ff;
+  border: 1px solid #e2e6ff;
+  text-align: center;
+}
+
+.book-callout p{
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.book-callout a{
+  color: #2d3cff;
+  text-decoration: none;
+}
+
+.book-callout a:hover{
+  text-decoration: underline;
+}
+
+</style>
+
+
+
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>FRI Profile Tool</h1>
-    <p>Enter your four scores to see your profile match (High ≥ 18, Low &lt; 18), narrative, and chart.</p>
+    <p>Enter your four scores to see your profile match, narrative, and chart.</p>
 
     <div class="grid">
       <div class="card">
@@ -104,6 +166,15 @@
         <div id="profileName" class="muted">Enter scores and click “Generate Profile.”</div>
         <div id="narrative"></div>
       </div>
+      <div class="card book-callout">
+  <p>
+    Want more information?
+    <a href="https://www.amazon.com/Practicing-Forgiveness-Path-Toward-Healing/dp/0190937203" target="_blank" rel="noopener">
+      <strong>Practicing Forgiveness: A Path Toward Healing</strong>
+    </a>
+  </p>
+</div>
+
     </div>
 
     <div class="card" style="margin-top:14px;">
@@ -351,6 +422,19 @@ els.narrative.textContent = desc;   // description ONLY
 
   els.runBtn.addEventListener("click", run);
   drawChart([6,6,6,6]);
+  window.addEventListener("resize", () => {
+  const CE  = Number(els.ce.value);
+  const RR  = Number(els.rr.value);
+  const RC  = Number(els.rc.value);
+  const OUT = Number(els.out.value);
+
+  if ([CE, RR, RC, OUT].every(Number.isFinite)) {
+    drawChart([CE, RR, RC, OUT]);
+  } else {
+    drawChart([6, 6, 6, 6]);
+  }
+});
+
 </script>
 </body>
 </html>
