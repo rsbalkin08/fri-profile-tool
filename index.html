@@ -73,12 +73,18 @@
   /* Make slider full width */
   .controls input[type="range"] { width: 100%; }
 }
+      @media (max-width: 900px){
+  .inputs{
+    grid-template-columns: 1fr;
+  }
+}
+
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>FRI Profile Tool</h1>
-    <p>Enter your four scores to see your profile match (High ≥ 18, Low &lt; 18), narrative, and chart.</p>
+    <p>Enter your four scores to see your profile match, narrative, and chart.</p>
 
     <div class="grid">
       <div class="card">
